@@ -1,0 +1,13 @@
+Network Admin -Basic configuration 
+
+enable (done in EXEC mode)
+configuration terminal  (done in Privileged exec mode)
+hostname R1   (done in Global configuration mode)
+enable password cisco (done in Global configuration mode)
+enable secret ccna (done in Global configuration mode)
+service password-encryption (done in Global configuration mode)
+exit
+show running-configuration (done in Privileged EXEC mode)
+copy running-config startup-config (done in Privileged EXEC mode)
+write (done in Privileged EXEC mode)
+reload (done in Privileged EXEC mode)
