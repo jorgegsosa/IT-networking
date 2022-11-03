@@ -1,0 +1,23 @@
+comands:
+Router 1  
+
+enable 
+sh cdp
+sh controllers s0 (if its DCE, WE MUST CHANGE CLOCK RATE, IF NOT LEAVE AS IT IS))
+conf t 
+int s0
+no shut 
+clock rate 6400
+ip address 192.168.0.1 255.255.255.0
+end 
+
+router 2
+enable 
+sh cdp
+sh controllers s0 (if its DCE, WE MUST CHANGE CLOCK RATE, IF NOT LEAVE AS IT IS))
+conf t 
+int s0
+no shut 
+ip address 192.168.0.2 255.255.255.0
+end
+sh cdp
