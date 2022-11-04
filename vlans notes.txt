@@ -1,0 +1,76 @@
+VLANS
+
+- assign pc1 & pc3 to vlan 1, and pc2 & pc4 to vlan 1 
+- ping to check connectivity 
+
+configuring interfaces connecting sw1 and s2 as trun interfaces
+
+ping again
+
+directions
+
+1. lets ping 
+2. go into sw1 to assing vlan1 to pc1 and pc2
+
+Notes regarding commands in SW1 
+switchport mode access enable by deafult, but good practice to do it
+Native vlan is by default vlan 1
+For secuirty reasons we want to change this
+use show running-config to verify these changes
+the name vlan 2 will appear only
+vlan 1 name will not appear under f0/2 because is the native vlan
+
+Commands 
+enable
+conf t
+int f0/2
+switchport mode access
+switchport access vlan 1
+int f0/3
+switchport mode access
+switchport access vlan 2
+end
+sh running-config
+
+Notes regarding commands in SW2
+*Same as SW1*
+
+- Lets do a ping test again
+PC1 > pc3 (same vlan1) ping sucessful 
+pc2 > pc4 (same vlan2) failed ping
+
+Why did ping in VLAN 1 was successful but
+ping in VLAN 2 was not ?
+
+- This is because VLAN 1 is a native vlan and all traffic
+goes through the native vlan
+
+
+How to fix this:
+
+We have to configure the interface connecting both switches
+which in this cases is F0/1 as a trunk interface 
+
+
+Lets start on SW1 
+Comands
+enable 
+conf t 
+int f0/1
+switch mode trunk
+
+Now SW2
+comands 
+enable 
+conf t 
+int f0/1
+switch mode trunk
+
+Lets ping again
+PC1 > pc3 (same vlan1) ping sucessful 
+pc2 > pc4 (same vlan2) ping sucessful 
+
+
+
+
+
