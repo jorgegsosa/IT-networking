@@ -1,0 +1,44 @@
+Trunk encapsulation 
+
+- Assign PC2 & PC3 TO VLAN 2
+- Create a trunk betwewen to swtitch 1 and switch 2
+- because these a specefic type of swtiches
+- we need specify what kind of encapsulation we will use
+ " swtichport trunk encapsulation dot1q "
+- then we can made the trunk link
+ " swtichport mode trunk"
+
+Steps
+- assign IP addresses to PCs (10.0.0.1 to 10.0.0.3 /24)
+- ping to test connectivty 
+- create vlans on both switches 
+- ping again 
+
+Creating VLANS commands 
+
+SW1
+Enable
+conf t
+int f0/3
+switchport mode access
+switchport access vlan 2
+end
+sh running-config
+
+creating trunk
+
+
+
+SW2
+enable
+conf t
+int f0/2
+switchport mode access
+switchport access vlan 2
+end
+sh running-config
+
+creating trunk
+int f0/1
+swtichport trunk encapsulation dot1q
+switch port mode trunk
